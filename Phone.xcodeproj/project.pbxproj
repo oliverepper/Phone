@@ -27,8 +27,8 @@
 		A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneApp.swift; sourceTree = "<group>"; };
 		A74FBA7828DC4CEF007BD159 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A74FBA7928DC4CF0007BD159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A74FBA7E28DC4CF0007BD159 /* Phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A74FBA8428DC4CF0007BD159 /* Phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIPDemoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIPDemoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74FBA8628DC4CF0007BD159 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		A7DABC4328DC4DB200159EF9 /* DialPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialPad.swift; sourceTree = "<group>"; };
 		A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBar.swift; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 		A74FBA7F28DC4CF0007BD159 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A74FBA7E28DC4CF0007BD159 /* Phone.app */,
-				A74FBA8428DC4CF0007BD159 /* Phone.app */,
+				A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */,
+				A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 				A7DABC3F28DC4D5800159EF9 /* SwiftSIP */,
 			);
 			productName = "Phone (iOS)";
-			productReference = A74FBA7E28DC4CF0007BD159 /* Phone.app */;
+			productReference = A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A74FBA8328DC4CF0007BD159 /* Phone (macOS) */ = {
@@ -142,7 +142,7 @@
 				A7DABC4128DC4D5D00159EF9 /* SwiftSIP */,
 			);
 			productName = "Phone (macOS)";
-			productReference = A74FBA8428DC4CF0007BD159 /* Phone.app */;
+			productReference = A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -284,6 +284,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-Xcc -DPJ_AUTOCONF";
+				PRODUCT_NAME = SIPDemoPhone;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -337,6 +338,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-Xcc -DPJ_AUTOCONF";
+				PRODUCT_NAME = SIPDemoPhone;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -367,7 +369,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
-				PRODUCT_NAME = Phone;
+				PRODUCT_NAME = "${inherited}";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -400,7 +402,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
-				PRODUCT_NAME = Phone;
+				PRODUCT_NAME = "${inherited}";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -435,7 +437,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
-				PRODUCT_NAME = Phone;
+				PRODUCT_NAME = "${inherited}";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -468,7 +470,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
-				PRODUCT_NAME = Phone;
+				PRODUCT_NAME = "${inherited}";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
