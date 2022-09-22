@@ -1,0 +1,3 @@
+[submodule "Packages/SwiftSIP"]
+	path = Packages/SwiftSIP
+	url = https://github.com/oliverepper/SwiftSIP.git
