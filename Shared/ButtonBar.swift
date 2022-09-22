@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Cpjproject
+import SwiftSIP
 
 struct ButtonBar: View {
     @ObservedObject var model: Model

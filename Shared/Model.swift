@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 import SwiftSIP
-import Cpjproject
 #if os(iOS)
 import UIKit
 #endif

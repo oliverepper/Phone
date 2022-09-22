@@ -16,6 +16,7 @@ struct ContentView: View {
             TextField("Please enter number", text: $model.numberToCall).font(.title)
             DialPad(number: $model.numberToCall)
             ButtonBar(model: model)
+            Text(model.inviteSessionState.description)
         }.padding()
     }
 }
