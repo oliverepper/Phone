@@ -22,15 +22,16 @@ struct ContentView: View {
         VStack {
             if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
                let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                HStack {
+                HStack(alignment: .top) {
+                    Text(verbatim: pj_get_sys_info().pointee.description)
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text("Version: \(version) Build: \(build)")
                         if let date = buildDate {
                             Text(Self.dateFormatter.string(from: date))
                         }
-                    }.font(.footnote)
-                }
+                    }
+                }.font(.footnote)
             }
             TextField("Please enter number", text: $model.numberToCall).font(.title)
             DialPad(number: $model.numberToCall)
