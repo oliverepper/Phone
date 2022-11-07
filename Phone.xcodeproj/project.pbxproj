@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A712796B28FD4E060026C94F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712796928FD4DFA0026C94F /* Video.swift */; };
 		A74FBA8728DC4CF0007BD159 /* PhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */; };
 		A74FBA8828DC4CF0007BD159 /* PhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */; };
 		A74FBA8928DC4CF0007BD159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7828DC4CEF007BD159 /* ContentView.swift */; };
 		A74FBA8A28DC4CF0007BD159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7828DC4CEF007BD159 /* ContentView.swift */; };
 		A74FBA8B28DC4CF0007BD159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74FBA7928DC4CF0007BD159 /* Assets.xcassets */; };
 		A74FBA8C28DC4CF0007BD159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74FBA7928DC4CF0007BD159 /* Assets.xcassets */; };
-		A7DABC4028DC4D5800159EF9 /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A7DABC3F28DC4D5800159EF9 /* SwiftSIP */; };
-		A7DABC4228DC4D5D00159EF9 /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A7DABC4128DC4D5D00159EF9 /* SwiftSIP */; };
+		A75896ED291915F800E8A45C /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A75896EC291915F800E8A45C /* SwiftSIP */; };
+		A7A860D828F82C5900BA526A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A732F5C428F706D0001112F4 /* CoreMedia.framework */; };
+		A7A860D928F82C7300BA526A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A716209828F810120091845E /* VideoToolbox.framework */; };
+		A7A860DA28F82D0700BA526A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71620A028F811020091845E /* Carbon.framework */; };
+		A7AA919A291947B9009D3A74 /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A7AA9199291947B9009D3A74 /* SwiftSIP */; };
 		A7DABC4428DC4DB200159EF9 /* DialPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4328DC4DB200159EF9 /* DialPad.swift */; };
 		A7DABC4528DC4DB200159EF9 /* DialPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4328DC4DB200159EF9 /* DialPad.swift */; };
 		A7DABC4728DC4DB800159EF9 /* ButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */; };
@@ -24,6 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A712796928FD4DFA0026C94F /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		A716209828F810120091845E /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		A716209A28F810330091845E /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
+		A716209C28F810620091845E /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		A716209E28F810BF0091845E /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = System/Library/Frameworks/InputMethodKit.framework; sourceTree = SDKROOT; };
+		A71620A028F811020091845E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A71620A228F8110C0091845E /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
+		A732F5C428F706D0001112F4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneApp.swift; sourceTree = "<group>"; };
 		A74FBA7828DC4CEF007BD159 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A74FBA7928DC4CF0007BD159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7DABC4028DC4D5800159EF9 /* SwiftSIP in Frameworks */,
+				A7AA919A291947B9009D3A74 /* SwiftSIP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +61,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7DABC4228DC4D5D00159EF9 /* SwiftSIP in Frameworks */,
+				A7A860D928F82C7300BA526A /* VideoToolbox.framework in Frameworks */,
+				A75896ED291915F800E8A45C /* SwiftSIP in Frameworks */,
+				A7A860D828F82C5900BA526A /* CoreMedia.framework in Frameworks */,
+				A7A860DA28F82D0700BA526A /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A74FBA8628DC4CF0007BD159 /* macOS.entitlements */,
+				A712796928FD4DFA0026C94F /* Video.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -100,6 +116,13 @@
 		A7DABC3E28DC4D5800159EF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A71620A228F8110C0091845E /* CoreHaptics.framework */,
+				A71620A028F811020091845E /* Carbon.framework */,
+				A716209E28F810BF0091845E /* InputMethodKit.framework */,
+				A716209C28F810620091845E /* GameController.framework */,
+				A716209A28F810330091845E /* ForceFeedback.framework */,
+				A716209828F810120091845E /* VideoToolbox.framework */,
+				A732F5C428F706D0001112F4 /* CoreMedia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,7 +144,7 @@
 			);
 			name = "Phone (iOS)";
 			packageProductDependencies = (
-				A7DABC3F28DC4D5800159EF9 /* SwiftSIP */,
+				A7AA9199291947B9009D3A74 /* SwiftSIP */,
 			);
 			productName = "Phone (iOS)";
 			productReference = A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */;
@@ -141,7 +164,7 @@
 			);
 			name = "Phone (macOS)";
 			packageProductDependencies = (
-				A7DABC4128DC4D5D00159EF9 /* SwiftSIP */,
+				A75896EC291915F800E8A45C /* SwiftSIP */,
 			);
 			productName = "Phone (macOS)";
 			productReference = A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */;
@@ -221,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7DABC4B28DC4DBD00159EF9 /* Model.swift in Sources */,
+				A712796B28FD4E060026C94F /* Video.swift in Sources */,
 				A7DABC4528DC4DB200159EF9 /* DialPad.swift in Sources */,
 				A74FBA8A28DC4CF0007BD159 /* ContentView.swift in Sources */,
 				A74FBA8828DC4CF0007BD159 /* PhoneApp.swift in Sources */,
@@ -431,6 +455,7 @@
 				INFOPLIST_FILE = "Phone--macOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SIPDemoPhone;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = ...;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = ...;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,6 +490,7 @@
 				INFOPLIST_FILE = "Phone--macOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SIPDemoPhone;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = ...;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = ...;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,11 +540,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A7DABC3F28DC4D5800159EF9 /* SwiftSIP */ = {
+		A75896EC291915F800E8A45C /* SwiftSIP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftSIP;
 		};
-		A7DABC4128DC4D5D00159EF9 /* SwiftSIP */ = {
+		A7AA9199291947B9009D3A74 /* SwiftSIP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftSIP;
 		};

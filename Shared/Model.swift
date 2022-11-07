@@ -4,6 +4,9 @@ import SwiftSIP
 #if os(iOS)
 import UIKit
 #endif
+#if os(macOS)
+import AppKit
+#endif
 
 
 final class Model: ObservableObject {
@@ -13,6 +16,10 @@ final class Model: ObservableObject {
     @Published var inviteSessionState = PJSIP_INV_STATE_NULL
     @Published var numberToCall = ""
     @Published var server = "v7oliep.starface-cloud.com"
+
+    #if os(macOS)
+    @Published var preview: NSView? = nil
+    #endif
 
     private var cancellables = Set<AnyCancellable>()
 
