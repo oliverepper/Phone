@@ -7,11 +7,12 @@
 
 import SwiftUI
 import SwiftSIP
+import SwiftUITools
 
 class Preview: ObservableObject {
-    #if os(macOS)
+#if os(macOS)
     @Published var view: NSView?
-    #endif
+#endif
 }
 
 struct ContentView: View {
@@ -22,45 +23,31 @@ struct ContentView: View {
     }()
 
     @StateObject private var model = Model()
+    @State private var text = "Test"
 
     var body: some View {
         VStack {
-            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-               let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-                HStack(alignment: .top) {
-                    Text(verbatim: pj_get_sys_info().pointee.description)
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text("Version: \(version) Build: \(build)")
-                        if let date = buildDate {
-                            Text(Self.dateFormatter.string(from: date))
-                        }
-                    }
-                }.font(.footnote)
-            }
-            TextField("Please enter number", text: $model.numberToCall).font(.title)
-            DialPad(number: $model.numberToCall)
-            ButtonBar(model: model)
-            Text(model.inviteSessionState.description)
-            #if os(macOS)
+            Text(model.numberToCall.isEmpty ? "Please enter number" : model.numberToCall)
+                .foregroundColor(model.numberToCall.isEmpty ? .gray : .primary)
+                .font(.title)
+                .padding()
+
+            Buttons(model: model)
+                .padding()
+
+#if os(macOS)
             Video(view: $model.preview)
             Button("Start preview") {
                 startPreview()
             }
-            #endif
+#endif
+            BuildInfo(leftText: pj_get_sys_info().pointee.description + "\nlastCallId: \(model.lastCallId)" + "\ninviteSessionState: \(model.inviteSessionState)")
+                .padding(.top)
         }.padding()
     }
 
-    var buildDate: Date? {
-        guard let infoPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
-        let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
-        let infoDate = infoAttr[.modificationDate] as? Date else {
-            return nil
-        }
-        return infoDate
-    }
 
-    #if os(macOS)
+#if os(macOS)
     private func startPreview() {
         var prm = pjsua_vid_preview_param()
         pjsua_vid_preview_param_default(&prm)
@@ -71,7 +58,8 @@ struct ContentView: View {
         pjsua_vid_win_get_info(windowId, &windowInfo)
         model.preview = Unmanaged<NSWindow>.fromOpaque(windowInfo.hwnd.info.cocoa.window).takeUnretainedValue().contentView
     }
-    #endif
+#endif
+
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -1,6 +1,8 @@
 import Foundation
 import Combine
 import SwiftSIP
+import SwiftUI
+import SwiftUITools
 #if os(iOS)
 import UIKit
 #endif
@@ -25,8 +27,8 @@ final class Model: ObservableObject {
 
     init() {
         sip.controller.createTransport(withType: PJSIP_TRANSPORT_TLS, andPort: 5061)
-        sip.controller.createAccount(onServer: "v7oliep.starface-cloud.com", forUser: "stdsip") {
-            "357wvNilKdwhYWW0ieUVkjv6L82dyB"
+        sip.controller.createAccount(onServer: server, forUser: "stdsip") {
+            ProcessInfo.processInfo.environment["SIP_PASSWORD"] ?? ""
         }
 
         // handle Incoming Calls
@@ -34,9 +36,15 @@ final class Model: ObservableObject {
             .print()
             .assign(to: &$lastCallId)
 
-        // handle CalLState updates
+        // handle CallState updates
         sip.callState().receive(on: RunLoop.main).map(\.state)
             .print()
+            .assign(to: &$inviteSessionState)
+
+        sip.callState().receive(on: RunLoop.main)
+            .print()
+            .handleEvents(receiveOutput: { (callId, _) in self.lastCallId = callId })
+            .map(\.state)
             .assign(to: &$inviteSessionState)
 
         sip.controller.libStart()
@@ -50,5 +58,44 @@ final class Model: ObservableObject {
             }
         }.store(in: &cancellables)
         #endif
+    }
+
+    func send(event: ButtonEvent) {
+        print(event.key)
+        switch event.key {
+        case let k where (0...9).map(String.init).contains(k):
+            if k == "0" && event.modifier == .isLongPress && numberToCall.isEmpty {
+                sip.controller.playDTMF(event.key)
+                numberToCall = "+"
+                break
+            }
+            if k == "1" && event.modifier == .isLongPress {
+                sip.controller.playDTMF(event.key)
+                numberToCall = "+4915123595397"
+                break
+            }
+            if k == "1" && event.modifier == .control {
+                sip.controller.playDTMF("1234567890")
+                return
+            }
+            if k == "2" && event.modifier == .isLongPress {
+                sip.controller.playDTMF(event.key)
+                numberToCall = "+4989427005.771"
+                break
+            }
+            numberToCall += event.key
+            sip.controller.playDTMF(event.key)
+        case "delete":
+            if event.modifier == .isLongPress { numberToCall = ""}
+            numberToCall = .init(numberToCall.dropLast(1))
+        case "call":
+            try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: server)
+        case "answer":
+            sip.controller.answerCall(withId: lastCallId)
+        case "hangup":
+            sip.controller.hangupCall(withId: lastCallId)
+        default:
+            numberToCall += event.key
+        }
     }
 }

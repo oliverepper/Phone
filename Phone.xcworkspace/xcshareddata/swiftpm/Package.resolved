@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuitools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/oliverepper/SwiftUITools",
+      "state" : {
+        "branch" : "main",
+        "revision" : "37cae050b869b537ae16a0b7db6d913e05ec5a36"
+      }
+    }
+  ],
+  "version" : 2
+}

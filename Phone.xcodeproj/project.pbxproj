@@ -15,14 +15,14 @@
 		A74FBA8B28DC4CF0007BD159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74FBA7928DC4CF0007BD159 /* Assets.xcassets */; };
 		A74FBA8C28DC4CF0007BD159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A74FBA7928DC4CF0007BD159 /* Assets.xcassets */; };
 		A75896ED291915F800E8A45C /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A75896EC291915F800E8A45C /* SwiftSIP */; };
+		A762F9EE293B8FD1008AC41E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F9ED293B8FD1008AC41E /* Buttons.swift */; };
+		A762F9EF293B8FD1008AC41E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F9ED293B8FD1008AC41E /* Buttons.swift */; };
+		A762F9F3293BDDA2008AC41E /* SwiftUITools in Frameworks */ = {isa = PBXBuildFile; productRef = A762F9F2293BDDA2008AC41E /* SwiftUITools */; };
+		A762F9F5293BDDA8008AC41E /* SwiftUITools in Frameworks */ = {isa = PBXBuildFile; productRef = A762F9F4293BDDA8008AC41E /* SwiftUITools */; };
 		A7A860D828F82C5900BA526A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A732F5C428F706D0001112F4 /* CoreMedia.framework */; };
 		A7A860D928F82C7300BA526A /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A716209828F810120091845E /* VideoToolbox.framework */; };
 		A7A860DA28F82D0700BA526A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71620A028F811020091845E /* Carbon.framework */; };
 		A7AA919A291947B9009D3A74 /* SwiftSIP in Frameworks */ = {isa = PBXBuildFile; productRef = A7AA9199291947B9009D3A74 /* SwiftSIP */; };
-		A7DABC4428DC4DB200159EF9 /* DialPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4328DC4DB200159EF9 /* DialPad.swift */; };
-		A7DABC4528DC4DB200159EF9 /* DialPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4328DC4DB200159EF9 /* DialPad.swift */; };
-		A7DABC4728DC4DB800159EF9 /* ButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */; };
-		A7DABC4828DC4DB800159EF9 /* ButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */; };
 		A7DABC4A28DC4DBD00159EF9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4928DC4DBD00159EF9 /* Model.swift */; };
 		A7DABC4B28DC4DBD00159EF9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DABC4928DC4DBD00159EF9 /* Model.swift */; };
 /* End PBXBuildFile section */
@@ -42,8 +42,7 @@
 		A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIPDemoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIPDemoPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74FBA8628DC4CF0007BD159 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		A7DABC4328DC4DB200159EF9 /* DialPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialPad.swift; sourceTree = "<group>"; };
-		A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBar.swift; sourceTree = "<group>"; };
+		A762F9ED293B8FD1008AC41E /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		A7DABC4928DC4DBD00159EF9 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A7FF9D1128F5860300AEB63F /* Phone--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Phone--macOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A762F9F3293BDDA2008AC41E /* SwiftUITools in Frameworks */,
 				A7AA919A291947B9009D3A74 /* SwiftSIP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A762F9F5293BDDA8008AC41E /* SwiftUITools in Frameworks */,
 				A7A860D928F82C7300BA526A /* VideoToolbox.framework in Frameworks */,
 				A75896ED291915F800E8A45C /* SwiftSIP in Frameworks */,
 				A7A860D828F82C5900BA526A /* CoreMedia.framework in Frameworks */,
@@ -86,8 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				A7DABC4928DC4DBD00159EF9 /* Model.swift */,
-				A7DABC4628DC4DB800159EF9 /* ButtonBar.swift */,
-				A7DABC4328DC4DB200159EF9 /* DialPad.swift */,
+				A762F9ED293B8FD1008AC41E /* Buttons.swift */,
 				A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */,
 				A74FBA7828DC4CEF007BD159 /* ContentView.swift */,
 				A74FBA7928DC4CF0007BD159 /* Assets.xcassets */,
@@ -145,6 +145,7 @@
 			name = "Phone (iOS)";
 			packageProductDependencies = (
 				A7AA9199291947B9009D3A74 /* SwiftSIP */,
+				A762F9F2293BDDA2008AC41E /* SwiftUITools */,
 			);
 			productName = "Phone (iOS)";
 			productReference = A74FBA7E28DC4CF0007BD159 /* SIPDemoPhone.app */;
@@ -165,6 +166,7 @@
 			name = "Phone (macOS)";
 			packageProductDependencies = (
 				A75896EC291915F800E8A45C /* SwiftSIP */,
+				A762F9F4293BDDA8008AC41E /* SwiftUITools */,
 			);
 			productName = "Phone (macOS)";
 			productReference = A74FBA8428DC4CF0007BD159 /* SIPDemoPhone.app */;
@@ -197,6 +199,9 @@
 				Base,
 			);
 			mainGroup = A74FBA7128DC4CEF007BD159;
+			packageReferences = (
+				A7460D7629392AAE00BC4E5D /* XCRemoteSwiftPackageReference "SwiftUITools" */,
+			);
 			productRefGroup = A74FBA7F28DC4CF0007BD159 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,11 +236,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A762F9EE293B8FD1008AC41E /* Buttons.swift in Sources */,
 				A7DABC4A28DC4DBD00159EF9 /* Model.swift in Sources */,
-				A7DABC4428DC4DB200159EF9 /* DialPad.swift in Sources */,
 				A74FBA8928DC4CF0007BD159 /* ContentView.swift in Sources */,
 				A74FBA8728DC4CF0007BD159 /* PhoneApp.swift in Sources */,
-				A7DABC4728DC4DB800159EF9 /* ButtonBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,10 +249,9 @@
 			files = (
 				A7DABC4B28DC4DBD00159EF9 /* Model.swift in Sources */,
 				A712796B28FD4E060026C94F /* Video.swift in Sources */,
-				A7DABC4528DC4DB200159EF9 /* DialPad.swift in Sources */,
 				A74FBA8A28DC4CF0007BD159 /* ContentView.swift in Sources */,
+				A762F9EF293B8FD1008AC41E /* Buttons.swift in Sources */,
 				A74FBA8828DC4CF0007BD159 /* PhoneApp.swift in Sources */,
-				A7DABC4828DC4DB800159EF9 /* ButtonBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +391,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +465,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
 				PRODUCT_NAME = "${inherited}";
@@ -497,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.SIPDemoPhone";
 				PRODUCT_NAME = "${inherited}";
@@ -539,10 +542,31 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A7460D7629392AAE00BC4E5D /* XCRemoteSwiftPackageReference "SwiftUITools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/oliverepper/SwiftUITools";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		A75896EC291915F800E8A45C /* SwiftSIP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftSIP;
+		};
+		A762F9F2293BDDA2008AC41E /* SwiftUITools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7460D7629392AAE00BC4E5D /* XCRemoteSwiftPackageReference "SwiftUITools" */;
+			productName = SwiftUITools;
+		};
+		A762F9F4293BDDA8008AC41E /* SwiftUITools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7460D7629392AAE00BC4E5D /* XCRemoteSwiftPackageReference "SwiftUITools" */;
+			productName = SwiftUITools;
 		};
 		A7AA9199291947B9009D3A74 /* SwiftSIP */ = {
 			isa = XCSwiftPackageProductDependency;
