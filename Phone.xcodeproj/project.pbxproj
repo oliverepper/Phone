@@ -44,7 +44,6 @@
 		A74FBA8628DC4CF0007BD159 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		A762F9ED293B8FD1008AC41E /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		A7DABC4928DC4DBD00159EF9 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		A7ED69FC293D192500A7F9B5 /* SwiftUITools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUITools; path = ../SwiftUITools; sourceTree = "<group>"; };
 		A7FF9D1128F5860300AEB63F /* Phone--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Phone--macOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +75,6 @@
 		A74FBA7128DC4CEF007BD159 = {
 			isa = PBXGroup;
 			children = (
-				A7ED69FC293D192500A7F9B5 /* SwiftUITools */,
 				A7FF9D1128F5860300AEB63F /* Phone--macOS--Info.plist */,
 				A74FBA7628DC4CEF007BD159 /* Shared */,
 				A74FBA8528DC4CF0007BD159 /* macOS */,
