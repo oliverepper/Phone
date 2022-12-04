@@ -15,28 +15,18 @@ class Preview: ObservableObject {
 }
 
 private class _KeyReader: NSView {
-    var onPress: (ButtonEvent) -> Void = { _ in }
+    var onPress: (ProgrammableButton.Event) -> Void = { _ in }
     override var acceptsFirstResponder: Bool { true }
     override func keyDown(with event: NSEvent) {
         print("@@@@@ event: \(event)")
-        if let key = ButtonKey.key(for: event) {
+        if let key = ProgrammableButton.Key.key(for: event) {
             onPress(.init(key: key))
         }
-//        if event.characters == "\u{7F}" {
-//            onPress(.init(key: "delete"))
-//            return
-//        }
-//        if let character = event.characters {
-//            onPress(.init(key: Buttons.Key.numbers.filter { $0.id == character }.first))
-//        }
-//        if let key = ButtonKey.all.contains(.init(id: event.c))
-//            onPress(.init(key: key))
-//        }
     }
 }
 
 struct KeyReader: NSViewRepresentable {
-    let onPress: (ButtonEvent) -> Void
+    let onPress: (ProgrammableButton.Event) -> Void
 
     func makeNSView(context: Context) -> some NSView {
         let view = _KeyReader()
@@ -70,7 +60,7 @@ struct ContentView: View {
 
             Buttons(model: model)
 #if os(macOS)
-                .background(KeyReader(onPress: model.send(event:)))
+                .background(KeyReader(onPress: model.send(_:)))
 #endif
                 .padding()
 

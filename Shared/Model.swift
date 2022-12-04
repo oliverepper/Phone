@@ -16,7 +16,11 @@ final class Model: ObservableObject {
 
     @Published var lastCallId = PJSUA_INVALID_ID.rawValue
     @Published var inviteSessionState = PJSIP_INV_STATE_NULL
-    @Published var numberToCall = ""
+    @Published var numberToCall = "" {
+        didSet {
+            if numberToCall ==  "00" { numberToCall = "+" }
+        }
+    }
     @Published var server = "v7oliep.starface-cloud.com"
 
     var enterCalls = true
@@ -62,12 +66,14 @@ final class Model: ObservableObject {
         #endif
     }
 
-    func send(event: ButtonEvent) {
+    func send(_ event: ProgrammableButton.Event) {
+        typealias Key = ProgrammableButton.Key
         switch event.key {
-        case let key where ButtonKey.extraDtmfKeys.contains(key):
+        case let key where Key.extraDtmfKeys.contains(key):
             sip.controller.playDTMF(key.id)
-        case let key where ButtonKey.numbers.contains(key):
+        case let key where Key.numbers.contains(key):
             if event.modifier == .isLongPress {
+                if key == .zero && numberToCall.isEmpty { numberToCall = "+" }
                 if key == .one { numberToCall = "+4915123595397" }
                 if key == .two { numberToCall = "+4989427005.771" }
                 sip.controller.playDTMF(key.id)
@@ -79,8 +85,9 @@ final class Model: ObservableObject {
             }
             sip.controller.playDTMF(key.id)
             numberToCall += key.id
-        case ButtonKey.delete:
-            if event.modifier == .isLongPress { numberToCall = "" }
+        case .delete:
+            if event.modifier == .isLongPress { return numberToCall = "" }
+            if numberToCall == "+" { return numberToCall = "0" }
             numberToCall = .init(numberToCall.dropLast(1))
         case .call:
             try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: server)
@@ -93,12 +100,12 @@ final class Model: ObservableObject {
             enterCalls = true
         case .enter:
             if enterCalls {
-                send(event: .init(key: .call))
+                send(.init(key: .call))
             } else {
-                send(event: .init(key: .hangup))
+                send(.init(key: .hangup))
             }
         default:
-            print("@@@@@ Unhandeld: \(event)")
+            print("@@@@@ Event not handled: \(event)")
         }
     }
 }

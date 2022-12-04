@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUITools
 import SwiftSIP
 
-extension ButtonKey {
+extension ProgrammableButton.Key {
     public static let one = Self(id: "1")
     public static let two = Self(id: "2")
     public static let three = Self(id: "3")
@@ -54,36 +54,38 @@ extension ButtonKey {
 #endif
 }
 
+typealias Btn = ProgrammableButton.Button
+
 struct Buttons: View {
     @ObservedObject var model: Model
     
     var body: some View {
         Grid(horizontalSpacing: 20, verticalSpacing: 20) {
             GridRow {
-                NumberPadButton(key: ButtonKey.one, onPress: model.send(event:)) { view(title: "1") }
-                NumberPadButton(key: ButtonKey.two, onPress: model.send(event:)) { view(title: "2", subtitle: "ABC") }
-                NumberPadButton(key: ButtonKey.three, onPress: model.send(event:)) { view(title: "3", subtitle: "DEF") }
+                Btn(key: .one, onPress: model.send(_:)) { view(title: "1") }
+                Btn(key: .two, onPress: model.send(_:)) { view(title: "2", subtitle: "ABC") }
+                Btn(key: .three, onPress: model.send(_:)) { view(title: "3", subtitle: "DEF") }
             }
             GridRow {
-                NumberPadButton(key: ButtonKey.four, onPress: model.send(event:)) { view(title: "4", subtitle: "GHI") }
-                NumberPadButton(key: ButtonKey.five, onPress: model.send(event:)) { view(title: "5", subtitle: "JKL") }
-                NumberPadButton(key: ButtonKey.six, onPress: model.send(event:)) { view(title: "6", subtitle: "MNO") }
+                Btn(key: .four, onPress: model.send(_:)) { view(title: "4", subtitle: "GHI") }
+                Btn(key: .five, onPress: model.send(_:)) { view(title: "5", subtitle: "JKL") }
+                Btn(key: .six, onPress: model.send(_:)) { view(title: "6", subtitle: "MNO") }
             }
             GridRow {
-                NumberPadButton(key: ButtonKey.seven, onPress: model.send(event:)) { view(title: "7", subtitle: "PQRS") }
-                NumberPadButton(key: ButtonKey.eight, onPress: model.send(event:)) { view(title: "8", subtitle: "TUV") }
-                NumberPadButton(key: ButtonKey.nine, onPress: model.send(event:)) { view(title: "9", subtitle: "WXYZ") }
+                Btn(key: .seven, onPress: model.send(_:)) { view(title: "7", subtitle: "PQRS") }
+                Btn(key: .eight, onPress: model.send(_:)) { view(title: "8", subtitle: "TUV") }
+                Btn(key: .nine, onPress: model.send(_:)) { view(title: "9", subtitle: "WXYZ") }
             }
             GridRow {
-                NumberPadButton(key: ButtonKey.star, onPress: model.send(event:)) { view(title: "*") }
-                NumberPadButton(key: ButtonKey.zero, onPress: model.send(event:)) { view(title: "0", subtitle: "+") }
-                NumberPadButton(key: ButtonKey.pound, onPress: model.send(event:)) { view(title: "#") }
+                Btn(key: .star, onPress: model.send(_:)) { view(title: "*") }
+                Btn(key: .zero, onPress: model.send(_:)) { view(title: "0", subtitle: "+") }
+                Btn(key: .pound, onPress: model.send(_:)) { view(title: "#") }
             }
             GridRow() {
                 Spacer()
                 switch model.inviteSessionState {
                 case PJSIP_INV_STATE_CALLING, PJSIP_INV_STATE_EARLY, PJSIP_INV_STATE_CONNECTING, PJSIP_INV_STATE_CONFIRMED:
-                    NumberPadButton(key: ButtonKey.hangup, onPress: model.send(event:)) {
+                    Btn(key: .hangup, onPress: model.send(_:)) {
                         VStack {
                             Image(systemName: "phone.down.fill")
                                 .foregroundColor(.red)
@@ -92,31 +94,31 @@ struct Buttons: View {
                     }
                 case PJSIP_INV_STATE_INCOMING:
                     HStack {
-                        NumberPadButton(key: ButtonKey.hangup, onPress: model.send(event:)) {
+                        Btn(key: .hangup, onPress: model.send(_:)) {
                             Image(systemName: "phone.fill.arrow.down.left")
                                 .foregroundColor(.red)
                                 .font(.title)
                         }
                         Spacer()
-                        NumberPadButton(key: ButtonKey.answer, onPress: model.send(event:)) {
+                        Btn(key: .answer, onPress: model.send(_:)) {
                             Image(systemName: "phone.fill.arrow.up.right")
                                 .foregroundColor(.green)
                                 .font(.title)
                         }
                     }
                 default:
-                    NumberPadButton(key: ButtonKey.call, onPress: model.send(event:)) {
+                    Btn(key: .call, onPress: model.send(_:)) {
                         Image(systemName: "phone.down.fill")
                             .foregroundColor(.green)
                             .font(.title)
                     }
                 }
                 if !model.numberToCall.isEmpty {
-                    NumberPadButton(key: ButtonKey.delete, onPress: model.send(event:)) {
+                    Btn(key: .delete, onPress: model.send(_:)) {
                         Image(systemName: "delete.left")
                     }
                 } else {
-                    NumberPadButton(key: ButtonKey.delete, onPress: model.send(event:)) {
+                    Btn(key: .delete, onPress: model.send(_:)) {
                         Image(systemName: "delete.left")
                     }.hidden()
                 }
