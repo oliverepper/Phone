@@ -20,41 +20,43 @@ extension ButtonKey {
     public static let eight = Self(id: "8")
     public static let nine = Self(id: "9")
     public static let zero = Self(id: "0")
-
+    
     public static let numbers: Set = [one, two, three, four, five, six, seven, eight, nine, zero]
-
+    
     public static let a = Self(id: "a")
     public static let b = Self(id: "b")
     public static let c = Self(id: "c")
     public static let d = Self(id: "d")
-
+    
     public static let extraDtmfKeys: Set = [a, b, c, d]
-
+    
     public static let star = Self(id: "*")
     public static let pound = Self(id: "#")
     public static let delete = Self(id: "\u{7F}")
-
+    
     public static let call = Self(id: "call")
     public static let answer = Self(id: "answer")
     public static let hangup = Self(id: "hangup")
-
+    
     public static let enter = Self(id: "enter")
-
+    
     public static var all: Set = numbers
         .union(extraDtmfKeys)
         .union([star, pound, delete])
         .union([call, answer, hangup])
         .union([enter])
-
+    
+#if os(macOS)
     public static func key(for event: NSEvent) -> Self? {
         if event.keyCode == 36 { return .enter }
         return all.filter { $0.id == event.characters }.first
     }
+#endif
 }
 
 struct Buttons: View {
     @ObservedObject var model: Model
-
+    
     var body: some View {
         Grid(horizontalSpacing: 20, verticalSpacing: 20) {
             GridRow {
