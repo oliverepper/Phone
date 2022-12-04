@@ -9,7 +9,10 @@ import SwiftUI
 import SwiftUITools
 import SwiftSIP
 
-extension ProgrammableButton.Key {
+typealias Btn = ProgrammableButton.Button
+typealias Key = ProgrammableButton.Key
+
+extension Key {
     public static let one       = Self(id: "1")
     public static let two       = Self(id: "2")
     public static let three     = Self(id: "3")
@@ -54,7 +57,7 @@ extension ProgrammableButton.Key {
 #endif
 }
 
-typealias Btn = ProgrammableButton.Button
+
 
 struct Buttons: View {
     @ObservedObject var model: Model
