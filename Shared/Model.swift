@@ -67,26 +67,27 @@ final class Model: ObservableObject {
     }
 
     func send(_ event: ProgrammableButton.Event) {
+        print("@@@@@ -> \(event)")
         typealias Key = ProgrammableButton.Key
         switch event.key {
         case let key where Key.extraDtmfKeys.contains(key):
             sip.controller.playDTMF(key.id)
         case let key where Key.numbers.contains(key):
-            if event.modifier == .isLongPress {
-                if key == .zero && numberToCall.isEmpty { numberToCall = "+" }
+            if event.modifier == [.longPress] {
+                if key == .zero { numberToCall = "+" }
                 if key == .one { numberToCall = "+4915123595397" }
                 if key == .two { numberToCall = "+4989427005.771" }
                 sip.controller.playDTMF(key.id)
                 break
             }
-            if event.modifier == .control {
+            if event.modifier == [.control] {
                 if key == .one { sip.controller.playDTMF("1234567890") }
                 break
             }
             sip.controller.playDTMF(key.id)
             numberToCall += key.id
         case .delete:
-            if event.modifier == .isLongPress { return numberToCall = "" }
+            if event.modifier == [.longPress] { return numberToCall = "" }
             if numberToCall == "+" { return numberToCall = "0" }
             numberToCall = .init(numberToCall.dropLast(1))
         case .call:
