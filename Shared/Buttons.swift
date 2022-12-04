@@ -10,36 +10,36 @@ import SwiftUITools
 import SwiftSIP
 
 extension ProgrammableButton.Key {
-    public static let one = Self(id: "1")
-    public static let two = Self(id: "2")
-    public static let three = Self(id: "3")
-    public static let four = Self(id: "4")
-    public static let five = Self(id: "5")
-    public static let six = Self(id: "6")
-    public static let seven = Self(id: "7")
-    public static let eight = Self(id: "8")
-    public static let nine = Self(id: "9")
-    public static let zero = Self(id: "0")
+    public static let one       = Self(id: "1")
+    public static let two       = Self(id: "2")
+    public static let three     = Self(id: "3")
+    public static let four      = Self(id: "4")
+    public static let five      = Self(id: "5")
+    public static let six       = Self(id: "6")
+    public static let seven     = Self(id: "7")
+    public static let eight     = Self(id: "8")
+    public static let nine      = Self(id: "9")
+    public static let zero      = Self(id: "0")
+    
+
+    
+    public static let a         = Self(id: "a")
+    public static let b         = Self(id: "b")
+    public static let c         = Self(id: "c")
+    public static let d         = Self(id: "d")
+
+    public static let star      = Self(id: "*")
+    public static let pound     = Self(id: "#")
+    public static let delete    = Self(id: "\u{7F}")
+    
+    public static let call      = Self(id: "call")
+    public static let answer    = Self(id: "answer")
+    public static let hangup    = Self(id: "hangup")
+
+    public static let enter     = Self(id: "enter")
     
     public static let numbers: Set = [one, two, three, four, five, six, seven, eight, nine, zero]
-    
-    public static let a = Self(id: "a")
-    public static let b = Self(id: "b")
-    public static let c = Self(id: "c")
-    public static let d = Self(id: "d")
-    
     public static let extraDtmfKeys: Set = [a, b, c, d]
-    
-    public static let star = Self(id: "*")
-    public static let pound = Self(id: "#")
-    public static let delete = Self(id: "\u{7F}")
-    
-    public static let call = Self(id: "call")
-    public static let answer = Self(id: "answer")
-    public static let hangup = Self(id: "hangup")
-    
-    public static let enter = Self(id: "enter")
-    
     public static var all: Set = numbers
         .union(extraDtmfKeys)
         .union([star, pound, delete])
@@ -62,24 +62,24 @@ struct Buttons: View {
     var body: some View {
         Grid(horizontalSpacing: 20, verticalSpacing: 20) {
             GridRow {
-                Btn(key: .one, onPress: model.send(_:)) { view(title: "1") }
-                Btn(key: .two, onPress: model.send(_:)) { view(title: "2", subtitle: "ABC") }
-                Btn(key: .three, onPress: model.send(_:)) { view(title: "3", subtitle: "DEF") }
+                Btn(key: .one,      onPress: model.send(_:)) { view(title: "1") }
+                Btn(key: .two,      onPress: model.send(_:)) { view(title: "2", subtitle: "ABC") }
+                Btn(key: .three,    onPress: model.send(_:)) { view(title: "3", subtitle: "DEF") }
             }
             GridRow {
-                Btn(key: .four, onPress: model.send(_:)) { view(title: "4", subtitle: "GHI") }
-                Btn(key: .five, onPress: model.send(_:)) { view(title: "5", subtitle: "JKL") }
-                Btn(key: .six, onPress: model.send(_:)) { view(title: "6", subtitle: "MNO") }
+                Btn(key: .four,     onPress: model.send(_:)) { view(title: "4", subtitle: "GHI") }
+                Btn(key: .five,     onPress: model.send(_:)) { view(title: "5", subtitle: "JKL") }
+                Btn(key: .six,      onPress: model.send(_:)) { view(title: "6", subtitle: "MNO") }
             }
             GridRow {
-                Btn(key: .seven, onPress: model.send(_:)) { view(title: "7", subtitle: "PQRS") }
-                Btn(key: .eight, onPress: model.send(_:)) { view(title: "8", subtitle: "TUV") }
-                Btn(key: .nine, onPress: model.send(_:)) { view(title: "9", subtitle: "WXYZ") }
+                Btn(key: .seven,    onPress: model.send(_:)) { view(title: "7", subtitle: "PQRS") }
+                Btn(key: .eight,    onPress: model.send(_:)) { view(title: "8", subtitle: "TUV") }
+                Btn(key: .nine,     onPress: model.send(_:)) { view(title: "9", subtitle: "WXYZ") }
             }
             GridRow {
-                Btn(key: .star, onPress: model.send(_:)) { view(title: "*") }
-                Btn(key: .zero, onPress: model.send(_:)) { view(title: "0", subtitle: "+") }
-                Btn(key: .pound, onPress: model.send(_:)) { view(title: "#") }
+                Btn(key: .star,     onPress: model.send(_:)) { view(title: "*") }
+                Btn(key: .zero,     onPress: model.send(_:)) { view(title: "0", subtitle: "+") }
+                Btn(key: .pound,    onPress: model.send(_:)) { view(title: "#") }
             }
             GridRow() {
                 Spacer()
