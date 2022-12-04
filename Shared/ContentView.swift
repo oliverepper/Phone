@@ -9,11 +9,47 @@ import SwiftUI
 import SwiftSIP
 import SwiftUITools
 
-class Preview: ObservableObject {
 #if os(macOS)
+class Preview: ObservableObject {
     @Published var view: NSView?
-#endif
 }
+
+private class _KeyReader: NSView {
+    var onPress: (ButtonEvent) -> Void = { _ in }
+    override var acceptsFirstResponder: Bool { true }
+    override func keyDown(with event: NSEvent) {
+        print("@@@@@ event: \(event)")
+        if let key = ButtonKey.key(for: event) {
+            onPress(.init(key: key))
+        }
+//        if event.characters == "\u{7F}" {
+//            onPress(.init(key: "delete"))
+//            return
+//        }
+//        if let character = event.characters {
+//            onPress(.init(key: Buttons.Key.numbers.filter { $0.id == character }.first))
+//        }
+//        if let key = ButtonKey.all.contains(.init(id: event.c))
+//            onPress(.init(key: key))
+//        }
+    }
+}
+
+struct KeyReader: NSViewRepresentable {
+    let onPress: (ButtonEvent) -> Void
+
+    func makeNSView(context: Context) -> some NSView {
+        let view = _KeyReader()
+        view.onPress = onPress
+        DispatchQueue.main.async {
+            view.window?.makeFirstResponder(view)
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSViewType, context: Context) {}
+}
+#endif
 
 struct ContentView: View {
     static let dateFormatter: DateFormatter = {
@@ -33,7 +69,14 @@ struct ContentView: View {
                 .padding()
 
             Buttons(model: model)
+#if os(macOS)
+                .background(KeyReader(onPress: model.send(event:)))
+#endif
                 .padding()
+
+
+
+
 
 #if os(macOS)
             Video(view: $model.preview)

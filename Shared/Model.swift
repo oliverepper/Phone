@@ -19,6 +19,8 @@ final class Model: ObservableObject {
     @Published var numberToCall = ""
     @Published var server = "v7oliep.starface-cloud.com"
 
+    var enterCalls = true
+
     #if os(macOS)
     @Published var preview: NSView? = nil
     #endif
@@ -61,41 +63,42 @@ final class Model: ObservableObject {
     }
 
     func send(event: ButtonEvent) {
-        print(event.key)
         switch event.key {
-        case let k where (0...9).map(String.init).contains(k):
-            if k == "0" && event.modifier == .isLongPress && numberToCall.isEmpty {
-                sip.controller.playDTMF(event.key)
-                numberToCall = "+"
+        case let key where ButtonKey.extraDtmfKeys.contains(key):
+            sip.controller.playDTMF(key.id)
+        case let key where ButtonKey.numbers.contains(key):
+            if event.modifier == .isLongPress {
+                if key == .one { numberToCall = "+4915123595397" }
+                if key == .two { numberToCall = "+4989427005.771" }
+                sip.controller.playDTMF(key.id)
                 break
             }
-            if k == "1" && event.modifier == .isLongPress {
-                sip.controller.playDTMF(event.key)
-                numberToCall = "+4915123595397"
+            if event.modifier == .control {
+                if key == .one { sip.controller.playDTMF("1234567890") }
                 break
             }
-            if k == "1" && event.modifier == .control {
-                sip.controller.playDTMF("1234567890")
-                return
-            }
-            if k == "2" && event.modifier == .isLongPress {
-                sip.controller.playDTMF(event.key)
-                numberToCall = "+4989427005.771"
-                break
-            }
-            numberToCall += event.key
-            sip.controller.playDTMF(event.key)
-        case "delete":
-            if event.modifier == .isLongPress { numberToCall = ""}
+            sip.controller.playDTMF(key.id)
+            numberToCall += key.id
+        case ButtonKey.delete:
+            if event.modifier == .isLongPress { numberToCall = "" }
             numberToCall = .init(numberToCall.dropLast(1))
-        case "call":
+        case .call:
             try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: server)
-        case "answer":
+            enterCalls = false
+        case .answer:
             sip.controller.answerCall(withId: lastCallId)
-        case "hangup":
+            enterCalls = false
+        case .hangup:
             sip.controller.hangupCall(withId: lastCallId)
+            enterCalls = true
+        case .enter:
+            if enterCalls {
+                send(event: .init(key: .call))
+            } else {
+                send(event: .init(key: .hangup))
+            }
         default:
-            numberToCall += event.key
+            print("@@@@@ Unhandeld: \(event)")
         }
     }
 }
