@@ -27,7 +27,7 @@ private class _KeyReader: NSView {
 
 struct KeyReader: NSViewRepresentable {
     let onPress: (ProgrammableButton.Event) -> Void
-
+    
     func makeNSView(context: Context) -> some NSView {
         let view = _KeyReader()
         view.onPress = onPress
@@ -36,50 +36,52 @@ struct KeyReader: NSViewRepresentable {
         }
         return view
     }
-
+    
     func updateNSView(_ nsView: NSViewType, context: Context) {}
 }
 #endif
 
 struct ContentView: View {
+    
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         return formatter
     }()
-
+    
     @StateObject private var model = Model()
     @State private var text = "Test"
-
+    
     var body: some View {
-        VStack {
-            Text(model.numberToCall.isEmpty ? "Please enter number" : model.numberToCall)
-                .foregroundColor(model.numberToCall.isEmpty ? .gray : .primary)
-                .font(.title)
-                .padding()
-
-            Buttons(model: model)
+        if !model.connected {
+            LoginView(model: model)
+        } else {
+            
+            VStack {
+                Text(model.numberToCall.isEmpty ? "Please enter number" : model.numberToCall)
+                    .foregroundColor(model.numberToCall.isEmpty ? .gray : .primary)
+                    .font(.title)
+                    .padding()
+                
+                Buttons(model: model)
 #if os(macOS)
-                .background(KeyReader(onPress: model.send(_:)))
+                    .background(KeyReader(onPress: model.send(_:)))
 #endif
-                .padding()
-
-
-
-
-
+                    .padding()
+                
 #if os(macOS)
-            Video(view: $model.preview)
-            Button("Start preview") {
-                startPreview()
-            }
+                Video(view: $model.preview)
+                Button("Start preview") {
+                    startPreview()
+                }
 #endif
-            BuildInfo(leftText: pj_get_sys_info().pointee.description + "\nlastCallId: \(model.lastCallId)" + "\ninviteSessionState: \(model.inviteSessionState)")
-                .padding(.top)
-        }.padding()
+                BuildInfo(leftText: pj_get_sys_info().pointee.description + "\nlastCallId: \(model.lastCallId)" + "\ninviteSessionState: \(model.inviteSessionState)")
+                    .padding(.top)
+            }.padding()
+        }
     }
-
-
+    
+    
 #if os(macOS)
     private func startPreview() {
         var prm = pjsua_vid_preview_param()
@@ -92,7 +94,7 @@ struct ContentView: View {
         model.preview = Unmanaged<NSWindow>.fromOpaque(windowInfo.hwnd.info.cocoa.window).takeUnretainedValue().contentView
     }
 #endif
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -100,3 +102,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

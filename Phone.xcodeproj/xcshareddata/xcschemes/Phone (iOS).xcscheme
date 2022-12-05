@@ -50,13 +50,6 @@
             ReferencedContainer = "container:Phone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "SIP_PASSWORD"
-            value = "r1bSQN0h9As0NMvsoz8ru418JpaEzl"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

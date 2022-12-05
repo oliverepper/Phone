@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A712796B28FD4E060026C94F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = A712796928FD4DFA0026C94F /* Video.swift */; };
+		A73E58FB293DD8CB00EB17AD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E58FA293DD8CB00EB17AD /* LoginView.swift */; };
+		A73E58FC293DD8CB00EB17AD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E58FA293DD8CB00EB17AD /* LoginView.swift */; };
+		A73E58FE293DDB9B00EB17AD /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E58FD293DDB9B00EB17AD /* KeychainWrapper.swift */; };
+		A73E58FF293DDB9B00EB17AD /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73E58FD293DDB9B00EB17AD /* KeychainWrapper.swift */; };
 		A74FBA8728DC4CF0007BD159 /* PhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */; };
 		A74FBA8828DC4CF0007BD159 /* PhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */; };
 		A74FBA8928DC4CF0007BD159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FBA7828DC4CEF007BD159 /* ContentView.swift */; };
@@ -36,6 +40,8 @@
 		A71620A028F811020091845E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		A71620A228F8110C0091845E /* CoreHaptics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreHaptics.framework; path = System/Library/Frameworks/CoreHaptics.framework; sourceTree = SDKROOT; };
 		A732F5C428F706D0001112F4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A73E58FA293DD8CB00EB17AD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A73E58FD293DDB9B00EB17AD /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneApp.swift; sourceTree = "<group>"; };
 		A74FBA7828DC4CEF007BD159 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A74FBA7928DC4CF0007BD159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,9 +92,11 @@
 		A74FBA7628DC4CEF007BD159 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A73E58FD293DDB9B00EB17AD /* KeychainWrapper.swift */,
 				A7DABC4928DC4DBD00159EF9 /* Model.swift */,
 				A762F9ED293B8FD1008AC41E /* Buttons.swift */,
 				A74FBA7728DC4CEF007BD159 /* PhoneApp.swift */,
+				A73E58FA293DD8CB00EB17AD /* LoginView.swift */,
 				A74FBA7828DC4CEF007BD159 /* ContentView.swift */,
 				A74FBA7928DC4CF0007BD159 /* Assets.xcassets */,
 			);
@@ -237,7 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A762F9EE293B8FD1008AC41E /* Buttons.swift in Sources */,
+				A73E58FB293DD8CB00EB17AD /* LoginView.swift in Sources */,
 				A7DABC4A28DC4DBD00159EF9 /* Model.swift in Sources */,
+				A73E58FE293DDB9B00EB17AD /* KeychainWrapper.swift in Sources */,
 				A74FBA8928DC4CF0007BD159 /* ContentView.swift in Sources */,
 				A74FBA8728DC4CF0007BD159 /* PhoneApp.swift in Sources */,
 			);
@@ -250,6 +260,8 @@
 				A7DABC4B28DC4DBD00159EF9 /* Model.swift in Sources */,
 				A712796B28FD4E060026C94F /* Video.swift in Sources */,
 				A74FBA8A28DC4CF0007BD159 /* ContentView.swift in Sources */,
+				A73E58FF293DDB9B00EB17AD /* KeychainWrapper.swift in Sources */,
+				A73E58FC293DD8CB00EB17AD /* LoginView.swift in Sources */,
 				A762F9EF293B8FD1008AC41E /* Buttons.swift in Sources */,
 				A74FBA8828DC4CF0007BD159 /* PhoneApp.swift in Sources */,
 			);

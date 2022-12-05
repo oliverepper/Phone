@@ -12,6 +12,11 @@ import AppKit
 
 
 final class Model: ObservableObject {
+    @AppStorage("server") var savedServer = ""
+    @AppStorage("user") var savedUser = ""
+
+    @Published var connected = false
+
     private(set) var sip = SwiftSIP()
 
     @Published var lastCallId = PJSUA_INVALID_ID.rawValue
@@ -21,7 +26,6 @@ final class Model: ObservableObject {
             if numberToCall ==  "00" { numberToCall = "+" }
         }
     }
-    @Published var server = "v7oliep.starface-cloud.com"
 
     var enterCalls = true
 
@@ -31,10 +35,12 @@ final class Model: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init() {}
+
+    func connect() {
         sip.controller.createTransport(withType: PJSIP_TRANSPORT_TLS, andPort: 5061)
-        sip.controller.createAccount(onServer: server, forUser: "stdsip") {
-            ProcessInfo.processInfo.environment["SIP_PASSWORD"] ?? ""
+        sip.controller.createAccount(onServer: savedServer, forUser: savedUser) {
+            KeychainWrapper.standard.string(forKey: ProcessInfo.processInfo.processName + "_password") ?? ""
         }
 
         // handle Incoming Calls
@@ -64,6 +70,8 @@ final class Model: ObservableObject {
             }
         }.store(in: &cancellables)
         #endif
+
+        self.connected = true
     }
 
     func send(_ event: ProgrammableButton.Event) {
@@ -91,7 +99,7 @@ final class Model: ObservableObject {
             if numberToCall == "+" { return numberToCall = "0" }
             numberToCall = .init(numberToCall.dropLast(1))
         case .call:
-            try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: server)
+            try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: savedServer)
             enterCalls = false
         case .answer:
             sip.controller.answerCall(withId: lastCallId)
