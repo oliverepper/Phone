@@ -38,7 +38,7 @@ final class Model: ObservableObject {
     init() {}
 
     func connect() {
-        sip.controller.createTransport(withType: PJSIP_TRANSPORT_TLS, andPort: 5061)
+        sip.controller.createTransportUsingSRVLookup(withType: PJSIP_TRANSPORT_TLS)
         sip.controller.createAccount(onServer: savedServer, forUser: savedUser) {
             KeychainWrapper.standard.string(forKey: ProcessInfo.processInfo.processName + "_password") ?? ""
         }
@@ -99,7 +99,7 @@ final class Model: ObservableObject {
             if numberToCall == "+" { return numberToCall = "0" }
             numberToCall = .init(numberToCall.dropLast(1))
         case .call:
-            try? sip.controller.callNumber(numberToCall.replacingOccurrences(of: " ", with: ""), onServer: savedServer)
+            try? sip.controller.callNumber(sanitizedNumber(number: numberToCall), onServer: savedServer)
             enterCalls = false
         case .answer:
             sip.controller.answerCall(withId: lastCallId)
@@ -116,5 +116,11 @@ final class Model: ObservableObject {
         default:
             print("@@@@@ Event not handled: \(event)")
         }
+    }
+
+    private func sanitizedNumber(number: String) -> String {
+        number
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: ".", with: "")
     }
 }

@@ -75,7 +75,10 @@ struct ContentView: View {
                     startPreview()
                 }
 #endif
-                BuildInfo(leftText: pj_get_sys_info().pointee.description + "\nlastCallId: \(model.lastCallId)" + "\ninviteSessionState: \(model.inviteSessionState)")
+                BuildInfo(leftText: pj_get_sys_info().pointee.description +
+                          "\nversion: \(pj_get_version().pointee.description)" +
+                          "\nlastCallId: \(model.lastCallId)" +
+                          "\ninviteSessionState: \(model.inviteSessionState)")
                     .padding(.top)
             }.padding()
         }
